@@ -38,9 +38,11 @@
 		</style>
 	</head>
 	<body>
+<?php $arr = [ 2,3,4,[6,7,8,9] ] ; ?>
 		<div class="container">
 			<div class="content">
 				<div class="title">Laravel 5</div>
+				<h2><?php print "Contents: {$arr[3][2]}" ;  ?></h2>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
