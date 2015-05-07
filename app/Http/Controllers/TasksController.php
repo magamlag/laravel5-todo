@@ -1,7 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Project;
 use App\Task;
 
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class TasksController extends Controller {
 	public function index()
 	{
 		//
+		return view('tasks.index', compact('project'));
 	}
 
 	/**
@@ -26,6 +28,7 @@ class TasksController extends Controller {
 	public function create()
 	{
 		//
+		return view('tasks.create', compact('project'));
 	}
 
 	/**
@@ -44,10 +47,10 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Task $task)
+	public function show(Project $project, Task $task)
 	{
 		//
-		dd( $task );
+		return view('tasks.show', compact('project', 'task'));
 	}
 
 	/**
@@ -56,9 +59,10 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(Task $task)
+	public function edit(Project $project,Task $task)
 	{
 		//
+		return view('tasks.edit', compact('project', 'task'));
 	}
 
 	/**
@@ -67,7 +71,7 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Task $task)
+	public function update(Project $project,Task $task)
 	{
 		//
 	}
@@ -78,7 +82,7 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy(Task $task)
+	public function destroy(Project $project, Task $task)
 	{
 		//
 	}
