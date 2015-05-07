@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+/*
+Route::model('tasks', 'Task');
+Route::model('projects', 'Project');*/
 
 Route::resource( 'projects', 'ProjectsController' );
 Route::resource( 'projects.tasks', 'TasksController' );

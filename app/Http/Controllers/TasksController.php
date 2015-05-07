@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Task;
 
 use Illuminate\Http\Request;
 
@@ -43,9 +44,10 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Task $task)
 	{
 		//
+		dd( $task );
 	}
 
 	/**
@@ -54,7 +56,7 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Task $task)
 	{
 		//
 	}
@@ -65,7 +67,7 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Task $task)
 	{
 		//
 	}
@@ -76,7 +78,7 @@ class TasksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Task $task)
 	{
 		//
 	}

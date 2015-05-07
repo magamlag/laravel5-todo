@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Project;
 
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class ProjectsController extends Controller {
 	public function index()
 	{
 		//
+		return view( 'projects.index' );
 	}
 
 	/**
@@ -43,9 +45,10 @@ class ProjectsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Project $project)
 	{
 		//
+		dd( $project );
 	}
 
 	/**
@@ -54,7 +57,7 @@ class ProjectsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Project $project)
 	{
 		//
 	}
@@ -65,7 +68,7 @@ class ProjectsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Project $project)
 	{
 		//
 	}
@@ -76,7 +79,7 @@ class ProjectsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Project $project)
 	{
 		//
 	}
