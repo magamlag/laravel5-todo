@@ -14,7 +14,7 @@ class TasksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Project $project)
 	{
 		//
 		return view('tasks.index', compact('project'));
@@ -25,7 +25,7 @@ class TasksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Project $project)
 	{
 		//
 		return view('tasks.create', compact('project'));
@@ -36,7 +36,7 @@ class TasksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Project $project)
 	{
 		//
 	}
