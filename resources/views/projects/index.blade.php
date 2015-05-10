@@ -1,4 +1,3 @@
-<!-- /resources/views/projects/index.blade.php -->
 @extends('app')
  
 @section('content')
