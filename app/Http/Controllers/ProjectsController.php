@@ -17,7 +17,7 @@ class ProjectsController extends Controller {
 	{
 		//
 		$projects = Project::all();
-		return view('projects.index', compact('projects'));
+		return view( 'projects.index', compact( 'projects' ) );
 	}
 
 	/**
@@ -39,6 +39,10 @@ class ProjectsController extends Controller {
 	public function store()
 	{
 		//
+		$input = Input::all();
+		Project::create( $input );
+
+		return Redirect::route('projects.index')->with('message', 'Project created');
 	}
 
 	/**
@@ -74,6 +78,10 @@ class ProjectsController extends Controller {
 	public function update(Project $project)
 	{
 		//
+		$input = array_except(Input::all(), '_method');
+		$project->update($input);
+
+		return Redirect::route('projects.show', $project->slug)->with('message', 'Project updated.');
 	}
 
 	/**
@@ -82,8 +90,9 @@ class ProjectsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy(Project $project)
-	{
+	public function destroy(Project $project) {
 		//
+		$project->delete();
+		return Redirect::route( 'projects.index' )->with( 'message', 'Project deleted.' );
 	}
 }

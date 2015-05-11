@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model {
 
+	protected $guarded = [];
+
 	/**
 	 * Find all tasks which will belongs to concrete project
 	 *
