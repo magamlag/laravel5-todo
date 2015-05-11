@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Project;
-
+use Redirect, Input;
 
 class ProjectsController extends Controller {
 
