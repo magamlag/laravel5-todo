@@ -2,12 +2,16 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Task
+ * @package App
+ */
 class Task extends Model {
 
 	protected static $rules = [
-			'name' => ['required', 'min:3'],
-			'slug' => ['required'],
-			'description' => ['required'],
+			'name'        => [ 'required', 'min:3' ],
+			'slug'        => [ 'required' ],
+			'description' => [ 'required' ],
 	];
 
 	protected $guarded = [];

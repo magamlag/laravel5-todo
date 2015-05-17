@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Project extends Model {
 
-	public  static $rules = [
-			'name' => ['required', 'min:3'],
-			'slug' => ['required'],
+	public static $rules = [
+			'name' => [ 'required', 'min:3' ],
+			'slug' => [ 'required' ],
 	];
 
 	protected $fillable = [ 'name', 'slug' ];

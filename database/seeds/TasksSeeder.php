@@ -19,7 +19,7 @@ class TasksTableSeeder extends Seeder {
         ['id' => 7, 'name' => 'Task 7', 'slug' => 'task-7', 'project_id' => 5, 'completed' => false, 'description' => 'My fifth task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
     );
 
-    //// Uncomment the below to run the seeder
+    // Uncomment the below to run the seeder
     DB::table('tasks')->insert($tasks);
   }
 

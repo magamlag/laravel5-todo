@@ -41,8 +41,10 @@ class ProjectsController extends Controller {
 	 * @return Response
 	 */
 	public function store( Request $request ) {
+
 		$v = \Validator::make( $request->all(), Project::$rules );
-		if($v->fails())
+
+		if ( $v->fails() )
 			return redirect()->back()->withErrors($v->errors());
 
 		Project::create( $request->all() );
@@ -56,9 +58,8 @@ class ProjectsController extends Controller {
 	 * @param  Project $project
 	 * @return Response
 	 */
-	public function show(Project $project)
-	{
-		return view('projects.show', compact('project'));
+	public function show( Project $project ) {
+		return view( 'projects.show', compact( 'project' ) );
 	}
 
 	/**
@@ -67,7 +68,7 @@ class ProjectsController extends Controller {
 	 * @param  Project $project
 	 * @return Response
 	 */
-	public function edit(Project $project)
+	public function edit( Project $project )
 	{
 		//
 		return view('projects.edit', compact('project'));
@@ -76,14 +77,20 @@ class ProjectsController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  Project $project
+	 * @param  Request $request
+	 * @return Redirect
 	 */
-	public function update(Project $project)
+	public function update( Project $project, Request $request )
 	{
-		//
-		$input = array_except(Input::all(), '_method');
-		$project->update($input);
+		$v = \Validator::make( $request->all(), Project::$rules );
+
+		if ( $v->fails() )
+			return redirect()->back()->withErrors( $v->errors());
+
+		$input = array_except( $request->all(), '_method' );
+
+		$project->update( $input );
 
 		return Redirect::route('projects.show', $project->slug)->with('message', 'Project updated.');
 	}
@@ -91,11 +98,10 @@ class ProjectsController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  Project $project
+	 * @return Redirect
 	 */
 	public function destroy(Project $project) {
-		//
 		$project->delete();
 		return Redirect::route( 'projects.index' )->with( 'message', 'Project deleted.' );
 	}
