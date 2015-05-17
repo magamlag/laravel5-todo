@@ -4,6 +4,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model {
 
+	protected static $rules = [
+			'name' => ['required', 'min:3'],
+			'slug' => ['required'],
+			'description' => ['required'],
+	];
+
 	protected $guarded = [];
 
 	/**

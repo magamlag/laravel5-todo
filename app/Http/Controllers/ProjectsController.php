@@ -1,11 +1,16 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Project;
 use Redirect, Input;
 
+/**
+ * Class ProjectsController
+ *
+ * CRUD class for Projects
+ * @package App\Http\Controllers
+ */
 class ProjectsController extends Controller {
 
 	/**
@@ -15,7 +20,6 @@ class ProjectsController extends Controller {
 	 */
 	public function index()
 	{
-		//
 		$projects = Project::all();
 		return view( 'projects.index', compact( 'projects' ) );
 	}
@@ -27,40 +31,40 @@ class ProjectsController extends Controller {
 	 */
 	public function create()
 	{
-		//
 		return view('projects.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param Request $request
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
-		$input = Input::all();
-		Project::create( $input );
+	public function store( Request $request ) {
+		$v = \Validator::make( $request->all(), Project::$rules );
+		if($v->fails())
+			return redirect()->back()->withErrors($v->errors());
 
-		return Redirect::route('projects.index')->with('message', 'Project created');
+		Project::create( $request->all() );
+
+		return Redirect::route( 'projects.index' )->with( 'message', 'Project created' );
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Project $project
 	 * @return Response
 	 */
 	public function show(Project $project)
 	{
-		//
 		return view('projects.show', compact('project'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Project $project
 	 * @return Response
 	 */
 	public function edit(Project $project)

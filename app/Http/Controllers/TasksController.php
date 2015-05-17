@@ -52,8 +52,9 @@ class TasksController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  Project $project
+	 * @param  Task $task
+	 * @return
 	 */
 	public function show(Project $project, Task $task)
 	{
@@ -64,7 +65,8 @@ class TasksController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Project $project
+	 * @param  Task $task
 	 * @return Response
 	 */
 	public function edit(Project $project,Task $task)
