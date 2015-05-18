@@ -39,7 +39,7 @@ class TasksController extends Controller {
 	 * @return Response
 	 */
 	public function store( Project $project, Request $request ) {
-		$v = \Validator::make( $request->all(), Fat::$rules );
+		$v = \Validator::make( $request->all(), Task::$rules );
 
 		if ( $v->fails() )
 			return redirect()->back()->withErrors( $v->errors() );
@@ -59,7 +59,7 @@ class TasksController extends Controller {
 	 * @return Response
 	 */
 	public function show( Project $project, Task $task ) {
-		return view( 'projects.show', compact( 'project', 'task' ) );
+		return view( 'tasks.show', compact( 'project', 'task' ) );
 	}
 
 	/**
